@@ -25,7 +25,6 @@ export class AppService {
   }
 
   resetMessages(){
-    //this.messageSource.next("All messages Confirmed");
     this.resetSource.next(true);
   }
 

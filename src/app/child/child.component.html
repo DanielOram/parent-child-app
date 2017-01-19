@@ -1,7 +1,7 @@
 <md-card>
     <h6>Child Component #{{childNumber}}</h6><br>
     <p>{{childMessage}}</p>
-    <button md-button [disabled]="responseSent" (click)="confirmMessageReceived()">
+    <button md-button [disabled]="responseSent || !childButtonActive" (click)="confirmMessageReceived()">
         Confirm message received
     </button>
 </md-card>

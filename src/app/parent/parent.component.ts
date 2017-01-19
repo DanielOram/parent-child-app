@@ -8,10 +8,10 @@ import { AppService } from '../app.service';
 })
 export class ParentComponent {
 
-  parentMessage: string = "Awaiting button press";
+  parentMessage: string = "Awaiting message from parent";
   childrenConfirmed: string[] = [];
   children: number[] = [1,2,3];
-  allResponsesReceivedFromChildren: boolean = false;
+  resetChildButtons: boolean = false;
 
   constructor(private appService: AppService){
     appService.responseStream.subscribe(
@@ -30,13 +30,13 @@ export class ParentComponent {
   checkAllResponsesReceived(){
       if (this.children.length == 0) {
           this.children = [1,2,3];
-          this.allResponsesReceivedFromChildren = true;
-          console.log(this.allResponsesReceivedFromChildren);
       }
     }
 
   sendMessage(){
     this.appService.sendMessage("message recieved from parent");
+    this.childrenConfirmed = [];
+    this.appService.resetMessages();
   }
 
   reset(){
