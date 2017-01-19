@@ -8,8 +8,8 @@ export class AppService {
   private messageSource = new Subject<string>();
   messageStream = this.messageSource.asObservable();
 
-  private confirmedSource = new Subject<number>();
-  confirmedStream = this.confirmedSource.asObservable();
+  private responseSource = new Subject<number>();
+  responseStream = this.responseSource.asObservable();
 
   private resetSource = new Subject<boolean>();
   resetStream = this.resetSource.asObservable();
@@ -20,11 +20,11 @@ export class AppService {
     this.messageSource.next(message);
   }
 
-  confirmMessage(confirmedComponent: number){
-    this.confirmedSource.next(confirmedComponent);
+  sendResponse(confirmedComponent: number){
+    this.responseSource.next(confirmedComponent);
   }
 
-  allMessagesConfirmed(){
+  resetMessages(){
     //this.messageSource.next("All messages Confirmed");
     this.resetSource.next(true);
   }

@@ -11,27 +11,21 @@ export class ChildComponent implements OnDestroy {
 
   @Input() childMessage: string;
   @Input() childNumber: number;
-  @Input() allMessagesConfirmed: boolean;
 
-  messageReceived: boolean = false;
-  
-
+  responseSent: boolean = false;
   subscription: Subscription;
 
   constructor(private appService: AppService) {
     this.subscription = appService.messageStream.subscribe(
       message => {
-        this.childMessage = message;
-        if(!this.allMessagesConfirmed){
-          this.messageReceived = true;
-        }     
+        this.childMessage = message;     
       }
     );
   }
 
   confirmMessageReceived(){
-    this.appService.confirmMessage(this.childNumber);
-    this.messageReceived = false;
+    this.appService.sendResponse(this.childNumber);
+    this.responseSent = true;
   }
 
 ngOnDestroy(){

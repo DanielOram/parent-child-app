@@ -15,6 +15,6 @@
 
 <md-grid-list cols="3">
     <md-grid-tile  *ngFor="let number of [1,2,3]">
-      <app-child [childMessage]="parentMessage" [childNumber]="number" [allMessagesConfirmed]="enableReset"></app-child>
+      <app-child [childMessage]="parentMessage" [childNumber]="number"></app-child>
     </md-grid-tile>
   </md-grid-list>
