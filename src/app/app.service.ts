@@ -5,16 +5,28 @@ import { Subject } from 'rxjs';
 export class AppService {
 
   //observable variables
-  private contentSource = new Subject<string>();
-  private contentStream = this.contentSource.asObservable();
+  private messageSource = new Subject<string>();
+  messageStream = this.messageSource.asObservable();
 
-  private contentString: string;
+  private confirmedSource = new Subject<number>();
+  confirmedStream = this.confirmedSource.asObservable();
+
+  private resetSource = new Subject<boolean>();
+  resetStream = this.resetSource.asObservable();
 
   constructor() { }
 
-  setMessage(message: string) {
-    this.contentSource.next(message);
-    this.contentString = message;
+  sendMessage(message: string) {
+    this.messageSource.next(message);
+  }
+
+  confirmMessage(confirmedComponent: number){
+    this.confirmedSource.next(confirmedComponent);
+  }
+
+  allMessagesConfirmed(){
+    //this.messageSource.next("All messages Confirmed");
+    this.resetSource.next(true);
   }
 
 }

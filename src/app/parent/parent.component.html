@@ -1,3 +1,20 @@
-<p>
-  parent works!
-</p>
+<md-card>
+  <h3>Parent Component</h3>
+  
+  <!--<button md-button (click)="reset()" [disabled]="disableReset">Reset</button>-->
+    
+      <md-list>
+      <md-list-item *ngFor="let confirmed of childrenConfirmed">
+        {{confirmed}}
+      </md-list-item>
+    </md-list>
+
+    <button md-button (click)="sendMessage()">Send Message to Children</button>
+
+</md-card>
+
+<md-grid-list cols="3">
+    <md-grid-tile  *ngFor="let number of [1,2,3]">
+      <app-child [childMessage]="parentMessage" [childNumber]="number" [allMessagesConfirmed]="enableReset"></app-child>
+    </md-grid-tile>
+  </md-grid-list>

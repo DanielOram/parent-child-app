@@ -1,0 +1,14 @@
+md-card {
+    margin: 50px;
+    background-color: #ccc;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+md-list {
+    min-height: 170px;
+}

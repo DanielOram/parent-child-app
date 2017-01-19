@@ -1,3 +1,8 @@
-<p>
-  child works!
-</p>
+<md-card>
+    <h6>Child Component #{{childNumber}}</h6><br>
+    <p>{{childMessage}}</p>
+    <button md-button [disabled]="!messageReceived || enableReset" (click)="confirmMessageReceived()">
+        Confirm message received
+    </button>
+    <!--<button md-button>Click Me!</button>-->
+</md-card>
